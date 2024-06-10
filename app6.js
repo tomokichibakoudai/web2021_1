@@ -23,18 +23,34 @@ app.get("/db", (req, res) => {
     })
 })
 app.get("/top", (req, res) => {
-    //console.log(req.query.pop);    // ①
+    console.log(req.query.pop);
     let desc = "";
     if( req.query.desc ) desc = " desc";
     let sql = "select id, 都道府県, 人口 from example order by 人口" + desc + " limit " + req.query.pop + ";";
-    //console.log(sql);    // ②
+    console.log(sql);
     db.serialize( () => {
         db.all(sql, (error, data) => {
             if( error ) {
                 res.render('show', {mes:"エラーです"});
             }
-            //console.log(data);    // ③
+            console.log(data);
             res.render('select', {data:data});
+        })
+    })
+})
+app.get("/top2", (req, res) => {
+    console.log(req.query.pop);
+    let desc = "";
+    if( req.query.desc ) desc = " desc";
+    let sql = "select id, 都道府県, 男性 from example order by 男性" + desc + " limit " + req.query.pop + ";";
+    console.log(sql);
+    db.serialize( () => {
+        db.all(sql, (error, data) => {
+            if( error ) {
+                res.render('show', {mes:"エラーです"});
+            }
+            console.log(data);
+            res.render('select2', {data:data});
         })
     })
 })
