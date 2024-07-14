@@ -12,9 +12,9 @@ app.get("/", (req, res) => {
   res.render('show', {mes:message});
 });
 
-app.get("/db", (req, res) => {
+app.get("/db/:id", (req, res) => {
     db.serialize( () => {
-        db.all("select id, 都道府県, 人口 from example;", (error, row) => {
+        db.all("select id, 都道府県, 人口 from example where id=" + req.params.id + ";", (error, row) => {
             if( error ) {
                 res.render('show', {mes:"エラーです"});
             }
