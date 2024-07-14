@@ -56,6 +56,24 @@ app.get("/top2", (req, res) => {
         })
     })
 })
+
+app.post("/insert", (req, res) => {
+let sql = `
+insert into example (都道府県,人口,大学) values ("` + req.body.name + `",` + req.body.jinko + `,` + req.body.daigaku + `);
+`
+console.log(sql);
+db.serialize( () => {
+db.run( sql, (error, row) => {
+console.log(error);
+if(error) {
+res.render('show', {mes:"エラーです"});
+}
+res.render('show', {mes:"成功です"});
+});
+});
+console.log(req.body);
+});
+
 app.use(function(req, res, next) {
   res.status(404).send('ページが見つかりません');
 });
