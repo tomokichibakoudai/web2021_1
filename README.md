@@ -23,3 +23,6 @@ tables.js | テーブル名を表示するサンプル
 test.db | app5.jsやapp6.jsで使用するデータベース
 
 test
+
+
+自宅環境で修正
