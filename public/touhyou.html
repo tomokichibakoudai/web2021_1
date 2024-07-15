@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+
+<input type="checkbox" name="vote[]" value="option1"> 選択肢1<br>
+<input type="checkbox" name="vote[]" value="option2"> 選択肢2<br>
+<input type="checkbox" name="vote[]" value="option3"> 選択肢3<br>
+<p>「投票」ボタンを押すと、値を(+1)します。</p>
+りんご
+<button id="btn1">投票</button>
+<input type="text" id="local1" size=2><br>
+みかん
+<button id="btn2">投票</button>
+<input type="text" id="local2" size=2><br>
+ぶどう
+<button id="btn3">投票</button>
+<input type="text" id="local3" size=2>
+
+<script>
+window.onload = () => {
+const Local1 = document.querySelector("#local1");
+const Local2 = document.querySelector("#local2");
+const Local3 = document.querySelector("#local3");
+const key1 = "touhyou1"; addStorage(key1, Local1, 0);
+const key2 = "touhyou2"; addStorage(key2, Local2, 0);
+const key3 = "touhyou3"; addStorage(key3, Local3, 0);
+/* ボタン1をクリック */
+document.querySelector("#btn1").addEventListener("click", (e)=>{
+addStorage(key1, Local1);
+})
+document.querySelector("#btn2").addEventListener("click", (e)=>{
+})
+document.querySelector("#btn3").addEventListener("click", (e)=>{
+})
+}
+
+function addStorage(key, display, plus=1){
+const buff = localStorage.getItem( key ); // キーの値を取得
+if( buff === null ){ // (初期設定)
+localStorage.setItem(key, 0);
+display.value = 0; // テキストボックスに表示
+} else {
+let value = Number(buff) + plus;
+localStorage.setItem(key, value); // 値を保存する
+display.value = value; // テキストボックスに表示
+}
+}
+</script>
+</body>
+</html>
+
+
+//tiebukuronotouhyoukinou

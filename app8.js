@@ -47,9 +47,29 @@ app.post("/touroku", (req, res) => {
   });
 });
   
+  app.get("/top", (req, res) => {
+//console.log(req.query.pop); // 1
+let desc = "";
+if( req.query.desc ) desc = " desc";
+let sql = "select id, 都道府県, 人口 from example order by 人口" +
+desc + " limit " + req.query.pop + ";";
+//console.log(sql); // 2
+db.serialize( () => {
+db.all(sql, (error, data) => {
+if( error ) {
+res.render('show', {mes:"エラーです"});
+}
+//console.log(data); // 3
+res.render('select', {data:data});
+})
+})
+})
 
-app.use(function(req, res, next) {
-  res.status(404).send('ページが見つかりません');
+app.post('/likes_count', (req, res) => {
+    if (req.body.vote) {
+        voteCount++;
+    }
+    res.redirect('/likes_count');
 });
 
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
