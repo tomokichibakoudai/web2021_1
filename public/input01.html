@@ -5,6 +5,15 @@
   <title>入力ページ</title>
 </head>
 <body>
+<h2>works</h2>
+      <% for( let row of data ) { %>
+        <tr>
+            <td><%= row.name %></td><br>
+            <td>作品の現在/文化財登録:</td><%= row.cultual_assets %></td><br>
+            <td>作家番号:</td><%= row.artist_id%></td><br>
+            <br>
+        </tr>
+      <% } %>
   <form action="/top">
     <input type="checkbox" name="desc" id="desc">
     <label for="desc">大きい順</label>

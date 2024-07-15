@@ -32,12 +32,26 @@ app.get("/db_works", (req, res) => {
             if( error ) {
                 res.render('show', {mes:"エラーです"});
             }
-            res.render('select', {data:data});
+            res.render('works', {data:data});
         })
     })
 });
 
-
+app.get("/top", (req, res) => {
+    console.log(req.query.pop);
+    console.log(req.query.situation);
+    let sql = "insert into works ("") + ";";
+    console.log(sql);
+    db.serialize( () => {
+        db.all(sql, (error, data) => {
+            if( error ) {
+                res.render('show', {mes:"エラーです"});
+            }
+            console.log(data);
+            res.render('select', {data:data});
+        })
+    })
+})
 app.use(function(req, res, next) {
   res.status(404).send('ページが見つかりません');
 });

@@ -8,12 +8,36 @@
   <h2>works</h2>
       <% for( let row of data ) { %>
         <tr>
-            <td><%= row.id %></td>
-            <td><%= row.name %></td>
-            <td><%= row.artist_id %></td>
-            <td><%= row.cultual_assets %></td>
+            <td><%= row.name %></td><br>
+            <td>作品の現在/文化財登録:</td><%= row.cultual_assets %></td><br>
+            <br>
         </tr>
       <% } %>
+      
+      <form action="/top">
+      <input type="text" placeholder="合奏" name="title">
+      <input type="text" placeholder="盗難により行方不明"name="situation"> 
+      <input type="submit" value="送信">
+      </form>
+      
+      
+      <form>
+  <label>メールアドレス：
+    <input type="email" placeholder="info@sample.com">
+    <input type="submit" value="送信">
+  </label>
+</form>
+
+<form action="/top">
+    <input type="checkbox" name="desc" id="desc">
+    <label for="desc">大きい順</label>
+    <input type="number" name="pop" id="pop">
+    <label for="pop">表示数</label>
+    <input type="submit" value="送信">
+  </form>
+
+
+
   </table>
 </body>
 </html>

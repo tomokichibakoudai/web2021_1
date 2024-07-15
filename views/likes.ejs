@@ -1,0 +1,32 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Show message</title>
+</head>
+<body>
+  <h2>みんなのすきなもの</h2>
+      <% for( let row of data ) { %>
+        <tr>
+            <td><%= row.name %></td><br>
+            <td>作った人:</td><%= row.artist %></td><br>
+            <td>みんなのコメント:</td><%= row.commnt %></td><br>
+            <td>いいね数:</td><%= row.ninkido %></td><br>
+            <form action="/like_count">
+            <label><input type="checkbox" name="check">like!</label>
+            <input type="submit" value="送信">
+      </form>
+            <br>
+        </tr>
+      <% } %>
+      
+      <td>きみの好きなものも登録しよう</td>
+      <form action="/touroku" method="post">
+      <input type="text" placeholder="ブラック・ジャック" name="a">
+      <input type="text" placeholder="手塚治虫"name="b"> 
+      <input type="text" placeholder="漫画の神様の傑作"name="c"> 
+      <input type="submit" value="送信">
+      </form>
+      
+</body>
+</html>
